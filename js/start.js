@@ -70,11 +70,14 @@ function addAnswer(answerText, qIdx, idx){
       children[i].style.animation = "fadeOut 0.5s";
     }
     setTimeout(() => {
-      var target = qnaList[qIdx].a[idx].type;
-      for(let i = 0; i < target.length; i++){
-        select[target[i]] += 1;
+      var target1 = qnaList[qIdx].a[idx].type1; // q인덱스의 질문, 인덱스의 대답의 type배열
+      var target2 = qnaList[qIdx].a[idx].type2;
+      for(let i = 0; i < target1.length; i++){
+        selectPeople[target1[i]] += 1;
       }
-
+      for(let i = 0; i < target2.length; i++){
+        selectMbti[target2[i]] += 1;
+      }
       for(let i = 0; i < children.length; i++){
         children[i].style.display = 'none';
       }
