@@ -20,16 +20,15 @@ function calResultM() {
 function setResult() {
   let point1 = calResultP();
   let point2 = calResultM();
-  let point = point1 + point2;
 
   const resultName = document.querySelector('.resultname');
   resultName.innerHTML = mbtiList[point2].mbti + infoList[point1].name;
 
   var resultImg = document.createElement('img');
   const imgDiv = document.querySelector('#resultImg');
-  var imgURL = 'img/image-' + point + '.png';
+  var imgURL = 'img/image-' + point1 + '' + point2 + '.png';
   resultImg.src = imgURL;
-  resultImg.alt = point;
+  resultImg.alt = point1 + point2;
   resultImg.classList.add('img-fluid');
   imgDiv.appendChild(resultImg);
 
