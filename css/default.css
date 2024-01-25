@@ -1,7 +1,12 @@
+@font-face {
+  font-family: 'DOSGothic';
+  src: url(DOSGothic.ttf);
+}
+
 body{
   background-color: pink;
 }
 
 *{
-  font-family: 'Nanum Pen Script', cursive;
+  font-family: 'DOSGothic', cursive;
 }
