@@ -1,6 +1,7 @@
 const main = document.querySelector("#main");
 const qna = document.querySelector("#qna");
 const result = document.querySelector("#result");
+const allResults = document.querySelector("#allResults");
 
 const endPoint = 12;
 const selectPeople = [0, 0, 0, 0, 0];
@@ -36,7 +37,7 @@ function setResult() {
   resultDesc.innerHTML = infoList[point1].desc + mbtiList[point2].desc;
 }
 
-function goResult(){
+function goResult() {
   qna.style.WebkitAnimation = "fadeOut 1s";
   qna.style.animation = "fadeOut 1s";
   setTimeout(() => {
@@ -49,7 +50,7 @@ function goResult(){
     setResult();
 }
 
-function addAnswer(answerText, qIdx, idx){
+function addAnswer(answerText, qIdx, idx) {
   var a = document.querySelector('.answerBox');
   var answer = document.createElement('button');
   answer.classList.add('answerList');
@@ -85,7 +86,7 @@ function addAnswer(answerText, qIdx, idx){
   }, false);
 }
 
-function goNext(qIdx){
+function goNext(qIdx) {
   if(qIdx === endPoint){
     goResult();
     return;
@@ -100,7 +101,7 @@ function goNext(qIdx){
   status.style.width = (100/endPoint) * (qIdx+1) + '%';
 }
 
-function begin(){
+function begin() {
   main.style.WebkitAnimation = "fadeOut 1s";
   main.style.animation = "fadeOut 1s";
   setTimeout(() => {
@@ -109,6 +110,21 @@ function begin(){
     setTimeout(() => {
       main.style.display = "none";
       qna.style.display = "block"
+    }, 450)
+    let qIdx = 0;
+    goNext(qIdx);
+  }, 450);
+}
+
+function goAll() {
+  result.style.WebkitAnimation = "fadeOut 1s";
+  result.style.animation = "fadeOut 1s";
+  setTimeout(() => {
+    allResults.style.WebkitAnimation = "fadeIn 1s";
+    allResults.style.animation = "fadeIn 1s";
+    setTimeout(() => {
+      result.style.display = "none";
+      allResults.style.display = "block"
     }, 450)
     let qIdx = 0;
     goNext(qIdx);
