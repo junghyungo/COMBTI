@@ -3,7 +3,7 @@ const qna = document.querySelector("#qna");
 const result = document.querySelector("#result");
 const allResults = document.querySelector("#allResults");
 
-const endPoint = 12;
+const endPoint = 15;
 const selectPeople = [0, 0, 0, 0, 0];
 const selectMbti = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
@@ -140,6 +140,7 @@ function goAllResults() {
       var answer = document.createElement('button');
       const imgs = document.querySelector('#imgs');
       picture.src = 'img/image-' + j + '' + i + '.png';
+      picture.classList.add('my-3', 'col-lg-6', 'col-md-8', 'col-sm-10', 'col-12', 'mx-auto');
       imgs.appendChild(picture);
       imgs.appendChild(answer);
       answer.innerHTML = mbtiList[i].mbti + infoList[j].name;
