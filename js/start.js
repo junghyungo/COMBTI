@@ -3,6 +3,7 @@ const qna = document.querySelector("#qna");
 const result = document.querySelector("#result");
 const allResults = document.querySelector("#allResults");
 
+let seeAllResults = false;
 const endPoint = 15;
 const selectPeople = [0, 0, 0, 0, 0];
 const selectMbti = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -127,8 +128,10 @@ function goAll() {
       result.style.display = "none";
       allResults.style.display = "block"
     }, 450)
-    let qIdx = 0;
-    goAllResults(qIdx);
+    if (!seeAllResults) {
+      goAllResults();
+    }
+    seeAllResults = true;
   }, 450);
 }
 
