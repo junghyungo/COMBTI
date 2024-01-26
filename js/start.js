@@ -31,6 +31,7 @@ function setResult() {
   resultImg.src = imgURL;
   resultImg.alt = point1 + point2;
   resultImg.classList.add('img-fluid');
+  imgDiv.innerHTML = '';
   imgDiv.appendChild(resultImg);
 
   const resultDesc = document.querySelector('.resultDesc');
@@ -127,6 +128,46 @@ function goAll() {
       allResults.style.display = "block"
     }, 450)
     let qIdx = 0;
-    goNext(qIdx);
+    goAllResults(qIdx);
   }, 450);
+}
+
+function goAllResults() {
+  var r = document.querySelector('.resultBox');
+  for(let i=0 ; i<mbtiList.length ; i++) {
+    for(let j=0 ; j<infoList.length ; j++) {
+      var picture = document.createElement('img');
+      var answer = document.createElement('button');
+      const imgs = document.querySelector('#imgs');
+      picture.src = 'img/image-' + j + '' + i + '.png';
+      imgs.appendChild(picture);
+      imgs.appendChild(answer);
+      answer.innerHTML = mbtiList[i].mbti + infoList[j].name;
+      answer.addEventListener("click", function() {
+        allResults.style.WebkitAnimation = "fadeOut 1s";
+        allResults.style.animation = "fadeOut 1s";
+        setTimeout(() => {
+          result.style.WebkitAnimation = "fadeIn 1s";
+          result.style.animation = "fadeIn 1s";
+          setTimeout(() => {
+            allResults.style.display = "none";
+            result.style.display = "block"
+          }, 450)})
+          const resultName = document.querySelector('.resultname');
+          resultName.innerHTML = mbtiList[i].mbti + infoList[j].name;
+
+          var resultImg = document.createElement('img');
+          const imgDiv = document.querySelector('#resultImg');
+          var imgURL = 'img/image-' + j + '' + i + '.png';
+          resultImg.src = imgURL;
+          resultImg.alt = j + i;
+          resultImg.classList.add('img-fluid');
+          imgDiv.innerHTML = '';
+          imgDiv.appendChild(resultImg);
+
+          const resultDesc = document.querySelector('.resultDesc');
+          resultDesc.innerHTML = infoList[j].desc + mbtiList[i].desc;
+      })
+    }
+  }
 }
